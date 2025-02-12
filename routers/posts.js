@@ -1,30 +1,21 @@
 const express = require ("express");
 const router = express.Router();
+const postsController = require("../controllers/postController")
 
 // index - lista dei post
-router.get("/", (req, res)=> {
-    res.send("lista dei post");
-});
+router.get("/", postsController.index);
 
 // show - mostra un singolo post
-router.get("/:id", (req, res)=> {
-    res.send(`Mostra il post con ID: ${req.params.id}`);
-});
+router.get("/:id",  postsController.show);
 
 // create - crea nuovo post
-router.post("/", (req, res) => {
-    res.send("creazione nuovo post")
-})
+router.post("/",  postsController.create)
 
 // update - aggiorna un post esistente
-router.put("/:id", (req, res) =>{
-    res.send (`Aggiornamento del post con ID: ${req.params.id}`);
-})
+router.put("/:id",  postsController.update)
 
 // delete - Cancella un post
-router.delete("/:id", (req, res) => {
-    res.send(`Cancellazione del post con ID: ${req.params.id}`);
-  });
+router.delete("/:id",  postsController.destroy);
   
 // esportiamo il router per app js
-module.exports = router
+module.exports = router;
