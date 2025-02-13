@@ -9,7 +9,7 @@ router.get("/", postsController.index);
 router.get("/:id",  postsController.show);
 
 // create - crea nuovo post
-router.post("/",  postsController.create)
+router.post("/",  postsController.store)
 
 // update - aggiorna un post esistente
 router.put("/:id",  postsController.update)
