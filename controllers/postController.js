@@ -1,12 +1,24 @@
 const posts = require("../data/posts2");
 
 
-// INDEX - Lista di tutti i post
-const index = (req, res) => {
-    res.json(posts);
-  };
+// funzione INDEX
+function index(req, res) {
+  // res.send('visualizza tutti gli elementi')
 
+  //Inizialmente, il posts filtrato corrisponde a quello originale
+  let filteredPosts = posts;
+
+  // Se la richiesta contiene un filtro, allora filtriamo il posts
+  if(req.query.tag){
+      filteredPosts = posts.filter(
+          post => post.tags.includes(req.query.tag)
+      );
+  }
   
+  // restituisce l'array di oggetti in formato json
+  res.json(filteredPosts);
+}
+
 // SHOW - Mostra un singolo post
 function show(req, res) {
     // res.send('visualizza un elemento')
@@ -111,5 +123,5 @@ function destroy(req, res) {
     // ritorno la risposta positiva di avvenuta cancellazione
     res.sendStatus(204);
 }
-  module.exports = { index, show, create, update, destroy };
+  module.exports = { index, show, store, update, destroy };
   

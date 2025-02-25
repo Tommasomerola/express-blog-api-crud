@@ -16,6 +16,6 @@ router.put("/:id",  postsController.update)
 
 // delete - Cancella un post
 router.delete("/:id",  postsController.destroy);
-  
+
 // esportiamo il router per app js
 module.exports = router;
